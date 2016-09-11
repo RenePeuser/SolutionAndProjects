@@ -11,9 +11,9 @@ namespace SolutionAndProjects.Models
 
         public SolutionFileInfo(string value) : base(value.ToFileInfo())
         {
-            Contract.Requires(Value.IsNotNull());
-            Contract.Requires(Value.Exists);
-            Contract.Requires(Value.Extension.Equals(SolutionExtension));
+            Contract.Requires(value.IsNotNull());
+            Contract.Requires(value.EndsWith(SolutionExtension));
+            Contract.Requires(File.Exists(value));
         }
     }
 }

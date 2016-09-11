@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics.Contracts;
-using System.IO;
 using System.Linq;
 using Extensions;
 using SolutionAndProjects.Models;

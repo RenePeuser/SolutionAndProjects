@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Diagnostics.Contracts;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SolutionAndProjects.Models;
 using SolutionAndProjects.Parser;
 

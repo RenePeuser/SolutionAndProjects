@@ -62,7 +62,7 @@ namespace SolutionAndProjects.Parser
         internal static ProjectType GetProjectType(this Guid guid)
         {
             Contract.Requires(guid.IsNotNull());
-            Contract.Requires(SProjectTypeMapping.ContainsKey(guid), $"Unknown guid:'{guid}' can not resolve projectFile type");
+            //Contract.Requires(SProjectTypeMapping.ContainsKey(guid));
 
             return SProjectTypeMapping[guid];
         }
