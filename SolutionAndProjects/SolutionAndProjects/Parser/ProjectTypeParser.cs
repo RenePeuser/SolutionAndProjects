@@ -7,7 +7,7 @@ namespace SolutionAndProjects.Parser
 {
     internal static class ProjectTypeParser
     {
-        private static readonly Dictionary<Guid, ProjectType> SProjectTypeMapping = new Dictionary<Guid, ProjectType>
+        internal static readonly Dictionary<Guid, ProjectType> SProjectTypeMapping = new Dictionary<Guid, ProjectType>
                                                                                     {
                                                                                         { new Guid("FAE04EC0-301F-11D3-BF4B-00C04F79EFBC"), ProjectType.C_Sharp },
                                                                                         { new Guid("F184B08F-C81C-45F6-A57F-5ABD9991F28F"), ProjectType.VB_NET },
@@ -62,7 +62,7 @@ namespace SolutionAndProjects.Parser
         internal static ProjectType GetProjectType(this Guid guid)
         {
             Contract.Requires(guid.IsNotNull());
-            //Contract.Requires(SProjectTypeMapping.ContainsKey(guid));
+            Contract.Requires(SProjectTypeMapping.ContainsKey(guid));
 
             return SProjectTypeMapping[guid];
         }
