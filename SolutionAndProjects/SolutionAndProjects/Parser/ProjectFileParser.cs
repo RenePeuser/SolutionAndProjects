@@ -12,7 +12,7 @@ namespace SolutionAndProjects.Parser
 {
     internal class ProjectFileParser
     {
-        
+
         internal static ProjectFile Parse(FileInfo fileInfo)
         {
             var document = XDocument.Load(fileInfo.FullName);
@@ -29,7 +29,10 @@ namespace SolutionAndProjects.Parser
         private static IEnumerable<ProjectType> AnalyzeProjectTypes(XDocument document)
         {
             var projectTypeGuids = document.ElementBy(ParserHelper.ProjectTypeGuids);
-            if (projectTypeGuids == null) return new[] { ProjectType.Invalid };
+            if (projectTypeGuids == null)
+            {
+                return new[] { ProjectType.Invalid };
+            }
 
             var result = projectTypeGuids.ValueOrDefault(string.Empty);
             var guidArray = result.Split(';').Select(item => new Guid(item));
