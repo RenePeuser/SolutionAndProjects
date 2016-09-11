@@ -8,12 +8,11 @@ namespace SolutionAndProjects.Parser
 {
     public static class SolutionFileParser
     {
-        public static SolutionFile Parse(FileInfo fileInfo)
+        public static SolutionFile Parse(SolutionFileInfo solutionFileInfo)
         {
-            Contract.Requires(fileInfo.IsNotNull());
-            Contract.Requires(fileInfo.Exists, $"File '{fileInfo.FullName}' does not exists");
+            Contract.Requires(solutionFileInfo.IsNotNull());
 
-            var solutionFile = Microsoft.Build.Construction.SolutionFile.Parse(fileInfo.FullName);
+            var solutionFile = Microsoft.Build.Construction.SolutionFile.Parse(solutionFileInfo.Value.FullName);
 
             var projects = solutionFile.ProjectsInOrder.Select(item => item.AbsolutePath.ToFileInfo())
                                                        .Select(ProjectFileParser.Parse)
@@ -22,7 +21,7 @@ namespace SolutionAndProjects.Parser
             var unitTestProjects = projects.Where(item => item.ProjectTypes.Any(type => type == ProjectType.Test)).ToList();
             var productiveProjects = projects.Except(unitTestProjects);
 
-            return new SolutionFile(fileInfo, projects, productiveProjects, unitTestProjects);
+            return new SolutionFile(solutionFileInfo, projects, productiveProjects, unitTestProjects);
         }
     }
 }

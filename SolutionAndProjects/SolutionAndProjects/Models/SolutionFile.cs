@@ -1,19 +1,18 @@
 ﻿using System.Collections.Generic;
-using System.IO;
 
 namespace SolutionAndProjects.Models
 {
     public class SolutionFile
     {
-        internal SolutionFile(FileInfo fileInfo, IEnumerable<ProjectFile> projectFiles, IEnumerable<ProjectFile> productiveProjectFiles, IEnumerable<ProjectFile> unitTestProjectFiles)
+        internal SolutionFile(SolutionFileInfo solutionFileInfo, IEnumerable<ProjectFile> projectFiles, IEnumerable<ProjectFile> productiveProjectFiles, IEnumerable<ProjectFile> unitTestProjectFiles)
         {
-            FileInfo = fileInfo;
+            SolutionFileInfo = solutionFileInfo;
             Projects = projectFiles;
             ProductiveProjects = productiveProjectFiles;
             UnitTestProjects = unitTestProjectFiles;
         }
 
-        public FileInfo FileInfo { get; }
+        public SolutionFileInfo SolutionFileInfo { get; }
 
         public IEnumerable<ProjectFile> Projects { get; }
 
