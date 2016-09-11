@@ -55,6 +55,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="Helper\ParserHelper.cs" />
     <Compile Include="Parser\ProjectReferenceParser.cs" />
     <Compile Include="Parser\AssemblyReferenceParser.cs" />
     <Compile Include="Parser\SolutionFileParser.cs" />
