@@ -3,151 +3,151 @@ namespace SolutionAndProjects
 {
     public enum ProjectType
     {
-        /// <summary>Invalid project type, default.</summary>
+        /// <summary>Invalid projectFile type, default.</summary>
         Invalid,
 
-        /// <summary>The project type which provides the program language C#.</summary>
+        /// <summary>The projectFile type which provides the program language C#.</summary>
         C_Sharp,
 
-        /// <summary>The project type which provides the program language VB.Net.</summary>
+        /// <summary>The projectFile type which provides the program language VB.Net.</summary>
         VB_NET,
 
-        /// <summary>The project type which provides the program language C++.</summary>
+        /// <summary>The projectFile type which provides the program language C++.</summary>
         C_Plus_Plus,
 
-        /// <summary>The project type which provides the program language F#.</summary>
+        /// <summary>The projectFile type which provides the program language F#.</summary>
         F_Sharp,
 
-        /// <summary>The project type which provides the program language J#.</summary>
+        /// <summary>The projectFile type which provides the program language J#.</summary>
         J_Sharp,
 
-        /// <summary>The project type which provides the program language JScript.</summary>
+        /// <summary>The projectFile type which provides the program language JScript.</summary>
         J_Script,
 
-        /// <summary>The project type which provide its a web application</summary>
+        /// <summary>The projectFile type which provide its a web application</summary>
         Web_Application,
 
-        /// <summary>The project type which provide its a web site</summary>
+        /// <summary>The projectFile type which provide its a web site</summary>
         Web_Site,
 
-        /// <summary>The project type which provide its a distributed system</summary>
+        /// <summary>The projectFile type which provide its a distributed system</summary>
         Distributed_System,
 
-        /// <summary>The project type which provide its a windows communication foundation project</summary>
+        /// <summary>The projectFile type which provide its a windows communication foundation projectFile</summary>
         WCF,
 
-        /// <summary>The project type which provide its a WPF application</summary>
+        /// <summary>The projectFile type which provide its a WPF application</summary>
         WPF,
 
-        /// <summary>The project type which provide its a visual database tool</summary>
+        /// <summary>The projectFile type which provide its a visual database tool</summary>
         Visual_Database_Tools,
 
-        /// <summary>The project type which provide its a database</summary>
+        /// <summary>The projectFile type which provide its a database</summary>
         Database,
 
-        /// <summary>The project type which provide its a database or other project type</summary>
+        /// <summary>The projectFile type which provide its a database or other projectFile type</summary>
         Database_Other_Project_Types,
 
-        /// <summary>The project type which provide its a unit test project</summary>
+        /// <summary>The projectFile type which provide its a unit test projectFile</summary>
         Test,
 
-        /// <summary>The project type which provide its a legacy 2003 smart device assembly with program language c sharp</summary>
+        /// <summary>The projectFile type which provide its a legacy 2003 smart device assembly with program language c sharp</summary>
         Legacy_2003_Smart_Device_C_Sharp,
 
-        /// <summary>The project type which provide its a legacy 2003 smart device assembly with program language c sharp</summary>
+        /// <summary>The projectFile type which provide its a legacy 2003 smart device assembly with program language c sharp</summary>
         Legacy_2003_Smart_Device_Vb_Net,
 
-        /// <summary>The project type which provide its a smart device assembly with program language c sharp</summary>
+        /// <summary>The projectFile type which provide its a smart device assembly with program language c sharp</summary>
         Smart_Device_C_Sharp,
 
-        /// <summary>The project type which provide its a smart device assembly with program language visual basic net</summary>
+        /// <summary>The projectFile type which provide its a smart device assembly with program language visual basic net</summary>
         Smart_Device_Vb_Net,
 
-        /// <summary>The project type which provide its a workflow project with program language c sharp</summary>
+        /// <summary>The projectFile type which provide its a workflow projectFile with program language c sharp</summary>
         Workflow_C_Sharp,
 
-        /// <summary>The project type which provide its a workflow project with program language visual basic net</summary>
+        /// <summary>The projectFile type which provide its a workflow projectFile with program language visual basic net</summary>
         Workflow_VB_Net,
 
-        /// <summary>The project type which provide its a deployment merge module project</summary>
+        /// <summary>The projectFile type which provide its a deployment merge module projectFile</summary>
         Deployment_Merge_Module,
 
-        /// <summary>The project type which provide its a deployment cab project</summary>
+        /// <summary>The projectFile type which provide its a deployment cab projectFile</summary>
         Deployment_Cab,
 
-        /// <summary>The project type which provide its a deployment setup project</summary>
+        /// <summary>The projectFile type which provide its a deployment setup projectFile</summary>
         Deployment_Setup,
 
-        /// <summary>The project type which provide its a deployment smart device cab project</summary>
+        /// <summary>The projectFile type which provide its a deployment smart device cab projectFile</summary>
         Deployment_Smart_Device_Cab,
 
-        /// <summary>The project type which provide its a visual studio tool for application project</summary>
+        /// <summary>The projectFile type which provide its a visual studio tool for application projectFile</summary>
         Visual_Studio_Tools_for_Applications,
 
-        /// <summary>The project type which provide its a visual studio tool for office project</summary>
+        /// <summary>The projectFile type which provide its a visual studio tool for office projectFile</summary>
         Visual_Studio_Tools_for_Office,
 
-        /// <summary>The project type which provide its a share point workflow</summary>
+        /// <summary>The projectFile type which provide its a share point workflow</summary>
         SharePoint_Workflow,
 
-        /// <summary>The project type which provide its a XNA windows project</summary>
+        /// <summary>The projectFile type which provide its a XNA windows projectFile</summary>
         XNA_Windows,
 
-        /// <summary>The project type which provide its a XNA xbox project</summary>
+        /// <summary>The projectFile type which provide its a XNA xbox projectFile</summary>
         XNA_XBox,
 
-        /// <summary>The project type which provide its a XNA zune project</summary>
+        /// <summary>The projectFile type which provide its a XNA zune projectFile</summary>
         XNA_Zune,
 
-        /// <summary>The project type which provide its a XNA xbox project</summary>
+        /// <summary>The projectFile type which provide its a XNA xbox projectFile</summary>
         SharePoint_VB_Net,
 
-        /// <summary>The project type which provide its a share point with language c sharp</summary>
+        /// <summary>The projectFile type which provide its a share point with language c sharp</summary>
         SharePoint_C_Sharp,
 
-        /// <summary>The project type which provide its silverlight project</summary>
+        /// <summary>The projectFile type which provide its silverlight projectFile</summary>
         Silverlight,
 
-        /// <summary>The project type which provide its a asp net model view controller 1.0 project</summary>
+        /// <summary>The projectFile type which provide its a asp net model view controller 1.0 projectFile</summary>
         ASP_NET_MVC_1_0,
 
-        /// <summary>The project type which provide its a asp net model view controller 2.0 project</summary>
+        /// <summary>The projectFile type which provide its a asp net model view controller 2.0 projectFile</summary>
         ASP_NET_MVC_2_0,
 
-        /// <summary>The project type which provide its a asp net model view controller 3.0 project</summary>
+        /// <summary>The projectFile type which provide its a asp net model view controller 3.0 projectFile</summary>
         ASP_NET_MVC_3_0,
 
-        /// <summary>The project type which provide its a asp net model view controller 4.0 project</summary>
+        /// <summary>The projectFile type which provide its a asp net model view controller 4.0 projectFile</summary>
         ASP_NET_MVC_4_0,
 
-        /// <summary>The project type which provide its a extensibility project</summary>
+        /// <summary>The projectFile type which provide its a extensibility projectFile</summary>
         Extensibility,
 
-        /// <summary>The project type which provide its a store app for windows phone 8.1 project</summary>
+        /// <summary>The projectFile type which provide its a store app for windows phone 8.1 projectFile</summary>
         Store_App_Windows_Phone_8_1,
 
-        /// <summary>The project type which provide its a store app for windows phone 8.1 project with silverlight in c sharp</summary>
+        /// <summary>The projectFile type which provide its a store app for windows phone 8.1 projectFile with silverlight in c sharp</summary>
         Store_App_Windows_Phone_8_1_Silverlight_C_Sharp,
 
-        /// <summary>The project type which provide its a store app for windows phone 8.1 project with silverlight in VB net</summary>
+        /// <summary>The projectFile type which provide its a store app for windows phone 8.1 projectFile with silverlight in VB net</summary>
         Store_App_Windows_Phone_8_1_Silverlight_VB_Net,
 
-        /// <summary>The project type which provide its a store app for windows 8.1 project</summary>
+        /// <summary>The projectFile type which provide its a store app for windows 8.1 projectFile</summary>
         Store_App_Windows_8_1,
 
-        /// <summary>The project type which provide its a universal store app</summary>
+        /// <summary>The projectFile type which provide its a universal store app</summary>
         Store_App_Universal,
 
-        /// <summary>The project type which provide its a portable universal store app</summary>
+        /// <summary>The projectFile type which provide its a portable universal store app</summary>
         Store_App_Portable_Universal,
 
-        /// <summary>The project type which provide its a light switch</summary>
+        /// <summary>The projectFile type which provide its a light switch</summary>
         LightSwitch,
 
-        /// <summary>The project type which provide its a light switch project</summary>
+        /// <summary>The projectFile type which provide its a light switch projectFile</summary>
         LightSwitch_Project,
 
-        /// <summary>The project type which provide its a office share point app</summary>
+        /// <summary>The projectFile type which provide its a office share point app</summary>
         Office_SharePoint_App,
     }
 }

@@ -2,11 +2,11 @@
 using System.Text;
 using Extensions;
 
-namespace SolutionAndProjects
+namespace SolutionAndProjects.Extensions
 {
     public static class ReferenceErrorExtensions
     {
-        public static string CreateErrorMessage(this IEnumerable<ProjectErrorResult> errors, string header)
+        public static string CreateErrorMessage(this IEnumerable<ProjectFileErrorResult> errors, string header)
         {
             var stringBuilder = new StringBuilder();
             stringBuilder.AppendLine();

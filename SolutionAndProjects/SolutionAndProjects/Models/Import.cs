@@ -1,4 +1,4 @@
-﻿namespace SolutionAndProjects
+﻿namespace SolutionAndProjects.Models
 {
     public class Import
     {

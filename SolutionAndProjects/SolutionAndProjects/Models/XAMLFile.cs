@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using Extensions.Helpers;
 
-namespace SolutionAndProjects
+namespace SolutionAndProjects.Models
 {
     public class XAMLFile : SemanticType<FileInfo>
     {

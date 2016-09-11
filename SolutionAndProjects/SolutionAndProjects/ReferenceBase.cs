@@ -1,17 +1,11 @@
-﻿using System.Diagnostics.Contracts;
-using System.Xml.Linq;
-using Extensions;
-
-namespace SolutionAndProjects
+﻿namespace SolutionAndProjects
 {
     public abstract class ReferenceBase
     {
-        protected ReferenceBase(XElement referenceElement)
+        protected ReferenceBase(string include, bool copyLocal)
         {
-            Contract.Requires(referenceElement.IsNotNull());
-
-            Include = referenceElement.AttributeBy("Include".ToAttributeName()).ToString();
-            CopyLocal = referenceElement.ElementBy("Private".ToLocalName()).ToBool(true);
+            Include = include;
+            CopyLocal = copyLocal;
         }
 
         public string Include { get; }

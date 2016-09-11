@@ -59,10 +59,10 @@ namespace SolutionAndProjects
                                                                                         { new Guid("C1CDDADD-2546-481F-9697-4EA41081F2FC"), ProjectType.Office_SharePoint_App }
                                                                                     };
 
-        internal static ProjectType GetProjectType(Guid guid)
+        internal static ProjectType GetProjectType(this Guid guid)
         {
             Contract.Requires(guid.IsNotNull());
-            Contract.Requires(SProjectTypeMapping.ContainsKey(guid), $"Unknown guid:'{guid}' can not resolve project type");
+            Contract.Requires(SProjectTypeMapping.ContainsKey(guid), $"Unknown guid:'{guid}' can not resolve projectFile type");
 
             return SProjectTypeMapping[guid];
         }

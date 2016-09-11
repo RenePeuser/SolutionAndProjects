@@ -4,23 +4,24 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using Extensions;
+using SolutionAndProjects.Models;
 
 namespace SolutionAndProjects
 {
-    public class ProjectErrorResult
+    public class ProjectFileErrorResult
     {
-        public ProjectErrorResult(Project project, IEnumerable<string> errors)
+        public ProjectFileErrorResult(ProjectFile projectFile, IEnumerable<string> errors)
         {
-            Contract.Requires(project.IsNotNull());
+            Contract.Requires(projectFile.IsNotNull());
             Contract.Requires(errors.IsNotNull());
 
-            Project = project;
+            ProjectFile = projectFile;
             Errors = errors;
             ErrorMessage = CreateErrorMessage();
             HasErrors = Errors.Any();
         }
 
-        public Project Project { get; }
+        public ProjectFile ProjectFile { get; }
 
         public IEnumerable<string> Errors { get; }
         
@@ -31,7 +32,7 @@ namespace SolutionAndProjects
         private string CreateErrorMessage()
         {
             var stringBuilder = new StringBuilder();
-            stringBuilder.AppendLine(string.Format(CultureInfo.InvariantCulture, "Project: {0}", Project.FileInfo.Name));
+            stringBuilder.AppendLine(string.Format(CultureInfo.InvariantCulture, "ProjectFile: {0}", ProjectFile.FileInfo.Name));
             stringBuilder.AppendLine();
             Errors.ForEach(item => stringBuilder.AppendLine(item));
             return stringBuilder.ToString();

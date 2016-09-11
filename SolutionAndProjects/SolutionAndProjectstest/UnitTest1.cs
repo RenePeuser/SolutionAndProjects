@@ -1,6 +1,6 @@
 ﻿using Extensions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using SolutionAndProjects;
+using SolutionAndProjects.Parser;
 
 namespace SolutionAndProjectstest
 {
@@ -10,9 +10,7 @@ namespace SolutionAndProjectstest
         [TestMethod]
         public void TestMethod1()
         {
-            var solutionFile =
-                new SolutionFile(
-                    @"D:\Projects\TestApplication\TestApplication.sln".ToFileInfo());
+            var solutionFile = SolutionFileParser.Parse(@"D:\Projects\TestApplication\TestApplication.sln".ToFileInfo());
         }
     }
 }

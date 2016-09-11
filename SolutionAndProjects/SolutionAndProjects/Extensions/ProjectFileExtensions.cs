@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Linq;
 using Extensions;
+using SolutionAndProjects.Analyzer;
+using SolutionAndProjects.Models;
 
-namespace SolutionAndProjects
+namespace SolutionAndProjects.Extensions
 {
-    public static class ProjectExtensions
+    public static class ProjectFileExtensions
     {
-        public static IEnumerable<ProjectErrorResult> CheckAssemblyReferencesForErrors(
-            this IEnumerable<Project> projects,
+        public static IEnumerable<ProjectFileErrorResult> CheckAssemblyReferencesForErrors(
+            this IEnumerable<ProjectFile> projects,
             Func<AssemblyReference, bool> findErrorFunc,
             Func<AssemblyReference, string> errorValue)
         {
@@ -20,15 +22,15 @@ namespace SolutionAndProjects
             var errorResults =
                 projects.Select(
                     project =>
-                    new ProjectErrorResult(
+                    new ProjectFileErrorResult(
                         project,
                         project.AssemblyReferences.AnalyzeErrors(findErrorFunc, errorValue)))
                     .Where(item => item.HasErrors);
             return errorResults;
         }
 
-        public static IEnumerable<ProjectErrorResult> CheckProjectReferencesForErrors(
-            this IEnumerable<Project> projects,
+        public static IEnumerable<ProjectFileErrorResult> CheckProjectReferencesForErrors(
+            this IEnumerable<ProjectFile> projects,
             Func<ProjectReference, bool> findErrorFunc,
             Func<ProjectReference, string> errorValue)
         {
@@ -36,17 +38,17 @@ namespace SolutionAndProjects
             Contract.Requires(findErrorFunc.IsNotNull());
             Contract.Requires(errorValue.IsNotNull());
 
-            var errorResults = projects.Select(project => new ProjectErrorResult(
+            var errorResults = projects.Select(project => new ProjectFileErrorResult(
                                                 project,
                                                 project.ProjectReferences.AnalyzeErrors(findErrorFunc, errorValue)))
                                        .Where(item => item.HasErrors);
             return errorResults;
         }
 
-        public static IEnumerable<ProjectErrorResult> CheckProjectsForErrors(
-            this IEnumerable<Project> projects,
-            Func<Project, bool> findErrorFunc,
-            Func<Project, string> errorValue)
+        public static IEnumerable<ProjectFileErrorResult> CheckProjectsForErrors(
+            this IEnumerable<ProjectFile> projects,
+            Func<ProjectFile, bool> findErrorFunc,
+            Func<ProjectFile, string> errorValue)
         {
             Contract.Requires(projects.IsNotNull());
             Contract.Requires(findErrorFunc.IsNotNull());
@@ -56,22 +58,22 @@ namespace SolutionAndProjects
                                                 {
                                                     var analyzeResult = project.AnalyzeErrors(findErrorFunc, errorValue);
                                                     var errors = analyzeResult == null ? new string[] { } : new[] { analyzeResult };
-                                                    return new ProjectErrorResult(project, errors);
+                                                    return new ProjectFileErrorResult(project, errors);
                                                 })
                                         .Where(item => item.HasErrors);
             return errorResults;
         }
 
-        public static ProjectErrorResult CheckProjectForErrors(
-            this Project project,
-            Func<Project, bool> findErrorFunc,
-            Func<Project, string> errorValue)
+        public static ProjectFileErrorResult CheckProjectForErrors(
+            this ProjectFile projectFile,
+            Func<ProjectFile, bool> findErrorFunc,
+            Func<ProjectFile, string> errorValue)
         {
-            Contract.Requires(project.IsNotNull());
+            Contract.Requires(projectFile.IsNotNull());
             Contract.Requires(findErrorFunc.IsNotNull());
             Contract.Requires(errorValue.IsNotNull());
 
-            var errorResults = new ProjectErrorResult(project, new[] { project.AnalyzeErrors(findErrorFunc, errorValue) });
+            var errorResults = new ProjectFileErrorResult(projectFile, new[] { projectFile.AnalyzeErrors(findErrorFunc, errorValue) });
             return errorResults;
         }
     }

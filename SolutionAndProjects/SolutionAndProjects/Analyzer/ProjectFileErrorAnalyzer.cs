@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace SolutionAndProjects
+namespace SolutionAndProjects.Analyzer
 {
-    internal static class ProjectErrorAnalyzer
+    internal static class ProjectFileErrorAnalyzer
     {
         internal static IEnumerable<string> AnalyzeErrors<T>(this IEnumerable<T> source, Func<T, bool> filterFunc, Func<T, string> errorValue)
         {
