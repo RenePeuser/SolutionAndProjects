@@ -102,6 +102,7 @@
   <ItemGroup>
     <Compile Include="Helper\ParserHelper.cs" />
     <Compile Include="Models\SolutionFileInfo.cs" />
+    <Compile Include="Models\SolutionFileName.cs" />
     <Compile Include="Parser\ProjectReferenceParser.cs" />
     <Compile Include="Parser\AssemblyReferenceParser.cs" />
     <Compile Include="Parser\SolutionFileParser.cs" />

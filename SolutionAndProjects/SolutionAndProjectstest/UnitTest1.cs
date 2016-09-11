@@ -11,7 +11,8 @@ namespace SolutionAndProjectstest
         [TestMethod]
         public void TestMethod1()
         {
-            var solutionFile = SolutionFileParser.Parse(new SolutionFileInfo(@"D:\Projects\TestApplication\TestApplication.exe"));
+            var solutionFile = SolutionFileParser.Parse(new SolutionFileInfo(@"D:\Projects\TestApplication\TestApplication.sln"));
+            Assert.IsNotNull(solutionFile);
         }
     }
 }
