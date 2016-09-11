@@ -16,8 +16,8 @@ namespace SolutionAndProjects.Parser
             var solutionFile = Microsoft.Build.Construction.SolutionFile.Parse(fileInfo.FullName);
 
             var projects = solutionFile.ProjectsInOrder.Select(item => item.AbsolutePath.ToFileInfo())
-                                                   .Select(ProjectFileParser.Parse)
-                                                   .ToList();
+                                                       .Select(ProjectFileParser.Parse)
+                                                       .ToList();
 
             var unitTestProjects = projects.Where(item => item.ProjectTypes.Any(type => type == ProjectType.Test)).ToList();
             var productiveProjects = projects.Except(unitTestProjects);
