@@ -65,16 +65,16 @@
     <Compile Include="Models\Import.cs" />
     <Compile Include="Models\ProjectFile.cs" />
     <Compile Include="Analyzer\ProjectFileErrorAnalyzer.cs" />
-    <Compile Include="ProjectFileErrorResult.cs" />
+    <Compile Include="Models\ProjectFileErrorResult.cs" />
     <Compile Include="Extensions\ProjectFileExtensions.cs" />
     <Compile Include="Models\ProjectReference.cs" />
     <Compile Include="Parser\ProjectFileParser.cs" />
-    <Compile Include="ProjectTypeService.cs" />
-    <Compile Include="ReferenceBase.cs" />
-    <Compile Include="ClassCreator.cs" />
+    <Compile Include="Parser\ProjectTypeParser.cs" />
+    <Compile Include="Models\ReferenceBase.cs" />
+    <Compile Include="Helper\ClassCreator.cs" />
     <Compile Include="Extensions\ReferenceErrorExtensions.cs" />
     <Compile Include="Models\SolutionFile.cs" />
-    <Compile Include="SolutionFileHelper.cs" />
+    <Compile Include="Helper\SolutionFileHelper.cs" />
     <Compile Include="ProjectType.cs" />
   </ItemGroup>
   <Choose>

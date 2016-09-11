@@ -1,8 +1,7 @@
 ﻿using System.IO;
-using System.Xml.Linq;
 using SolutionAndProjects.Models;
 
-namespace SolutionAndProjects
+namespace SolutionAndProjects.Helper
 {
     internal static class ClassCreator
     {

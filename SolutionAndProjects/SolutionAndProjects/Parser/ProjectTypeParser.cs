@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using Extensions;
 
-namespace SolutionAndProjects
+namespace SolutionAndProjects.Parser
 {
-    internal static class ProjectTypeService
+    internal static class ProjectTypeParser
     {
         private static readonly Dictionary<Guid, ProjectType> SProjectTypeMapping = new Dictionary<Guid, ProjectType>
                                                                                     {

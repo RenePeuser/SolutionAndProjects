@@ -5,6 +5,7 @@ using System.Linq;
 using System.Xml.Linq;
 using Extensions;
 using Extensions.Helpers;
+using SolutionAndProjects.Helper;
 using SolutionAndProjects.Models;
 
 namespace SolutionAndProjects.Parser
@@ -31,7 +32,7 @@ namespace SolutionAndProjects.Parser
 
             var result = projectTypeGuids.ValueOrDefault(string.Empty);
             var guidArray = result.Split(';').Select(item => new Guid(item));
-            return guidArray.Select(ProjectTypeService.GetProjectType);
+            return guidArray.Select(ProjectTypeParser.GetProjectType);
         }
 
         private static IEnumerable<Import> GetAllImports(XDocument document)

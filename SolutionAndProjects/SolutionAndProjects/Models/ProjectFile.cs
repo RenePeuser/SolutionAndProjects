@@ -19,7 +19,6 @@ namespace SolutionAndProjects.Models
             )
         {
             Contract.Requires(fileInfo.IsNotNull());
-            Contract.Requires(fileInfo.Exists);
             Contract.Requires(assemblyName.IsNotNullOrEmpty());
             Contract.Requires(assemblyReferences.IsNotNull());
             Contract.Requires(projectReferences.IsNotNull());

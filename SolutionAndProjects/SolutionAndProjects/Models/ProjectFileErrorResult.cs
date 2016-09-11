@@ -4,9 +4,8 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using Extensions;
-using SolutionAndProjects.Models;
 
-namespace SolutionAndProjects
+namespace SolutionAndProjects.Models
 {
     public class ProjectFileErrorResult
     {
