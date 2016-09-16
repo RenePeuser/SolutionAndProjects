@@ -31,7 +31,7 @@ namespace SolutionAndProjects.Models
         private string CreateErrorMessage()
         {
             var stringBuilder = new StringBuilder();
-            stringBuilder.AppendLine(string.Format(CultureInfo.InvariantCulture, "ProjectFile: {0}", ProjectFile.FileInfo.Name));
+            stringBuilder.AppendLine(string.Format(CultureInfo.InvariantCulture, "ProjectFile: {0}", ProjectFile.ProjectFileInfo.Value.Name));
             stringBuilder.AppendLine();
             Errors.ForEach(item => stringBuilder.AppendLine(item));
             return stringBuilder.ToString();

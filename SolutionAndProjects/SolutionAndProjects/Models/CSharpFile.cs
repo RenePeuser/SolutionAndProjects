@@ -1,12 +1,21 @@
-﻿using System.IO;
-using Extensions.Helpers;
+﻿using SolutionAndProjects.SpecificFileInfos;
 
 namespace SolutionAndProjects.Models
 {
-    public class CSharpFile : SemanticType<FileInfo>
+    public class CSharpFile
     {
-        public CSharpFile(FileInfo value) : base(value)
+        public CSharpFile(CSharpFileInfo cSharpFileInfo, string nameSpace, string name)
         {
+            CSharpFileInfo = cSharpFileInfo;
+            NameSpace = nameSpace;
+            Name = name;
         }
+
+        public CSharpFileInfo CSharpFileInfo { get; set; }
+
+        public string NameSpace { get; }
+
+        public string Name { get; }
+
     }
 }

@@ -1,24 +1,24 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics.Contracts;
-using System.IO;
 using Extensions;
+using SolutionAndProjects.SpecificFileInfos;
 
 namespace SolutionAndProjects.Models
 {
     public class ProjectFile
     {
         internal ProjectFile(
-            FileInfo fileInfo,
+            ProjectFileInfo projectFileInfo,
             string assemblyName,
             IEnumerable<AssemblyReference> assemblyReferences,
             IEnumerable<ProjectReference> projectReferences,
             IEnumerable<ProjectType> projectTypes,
             IEnumerable<Import> imports,
-            IEnumerable<CSharpFile> csharpFiles,
-            IEnumerable<XAMLFile> xamlFiles
+            IEnumerable<CSharpFileInfo> csharpFiles,
+            IEnumerable<XAMLFileInfo> xamlFiles
             )
         {
-            Contract.Requires(fileInfo.IsNotNull());
+            Contract.Requires(projectFileInfo.IsNotNull());
             Contract.Requires(assemblyName.IsNotNullOrEmpty());
             Contract.Requires(assemblyReferences.IsNotNull());
             Contract.Requires(projectReferences.IsNotNull());
@@ -27,7 +27,7 @@ namespace SolutionAndProjects.Models
             Contract.Requires(csharpFiles.IsNotNull());
             Contract.Requires(xamlFiles.IsNotNull());
 
-            FileInfo = fileInfo;
+            ProjectFileInfo = projectFileInfo;
             AssemblyName = assemblyName;
             AssemblyReferences = assemblyReferences;
             ProjectReferences = projectReferences;
@@ -41,7 +41,7 @@ namespace SolutionAndProjects.Models
 
         public IEnumerable<ProjectType> ProjectTypes { get; }
 
-        public FileInfo FileInfo { get; }
+        public ProjectFileInfo ProjectFileInfo { get; }
 
         public IEnumerable<AssemblyReference> AssemblyReferences { get; }
 
@@ -49,8 +49,8 @@ namespace SolutionAndProjects.Models
 
         public IEnumerable<Import> Imports { get; }
 
-        public IEnumerable<XAMLFile> XAMLFiles { get; set; }
+        public IEnumerable<XAMLFileInfo> XAMLFiles { get; }
 
-        public IEnumerable<CSharpFile> CSharpFiles { get; set; }
+        public IEnumerable<CSharpFileInfo> CSharpFiles { get; }
     }
 }

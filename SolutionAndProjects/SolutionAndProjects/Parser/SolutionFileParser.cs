@@ -2,6 +2,7 @@
 using System.Linq;
 using Extensions;
 using SolutionAndProjects.Models;
+using SolutionAndProjects.SpecificFileInfos;
 
 namespace SolutionAndProjects.Parser
 {
@@ -13,7 +14,7 @@ namespace SolutionAndProjects.Parser
 
             var solutionFile = Microsoft.Build.Construction.SolutionFile.Parse(solutionFileInfo.Value.FullName);
 
-            var projects = solutionFile.ProjectsInOrder.Select(item => item.AbsolutePath.ToFileInfo())
+            var projects = solutionFile.ProjectsInOrder.Select(item => new ProjectFileInfo(item.AbsolutePath))
                                                        .Select(ProjectFileParser.Parse)
                                                        .ToList();
 

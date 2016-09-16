@@ -1,12 +1,10 @@
-﻿using System.IO;
-using Extensions.Helpers;
-
-namespace SolutionAndProjects.Models
+﻿namespace SolutionAndProjects.Models
 {
-    public class XAMLFile : SemanticType<FileInfo>
+    public class XAMLFile
     {
-        public XAMLFile(FileInfo value) : base(value)
+        internal XAMLFile()
         {
+
         }
     }
 }

@@ -1,18 +1,17 @@
-﻿using System.IO;
-using SolutionAndProjects.Models;
+﻿using SolutionAndProjects.SpecificFileInfos;
 
 namespace SolutionAndProjects.Helper
 {
     internal static class ClassCreator
     {
-        internal static CSharpFile CreateCSharpFile(FileInfo fileInfo)
+        internal static CSharpFileInfo CreateCSharpFile(string path)
         {
-            return new CSharpFile(fileInfo);
+            return new CSharpFileInfo(path);
         }
 
-        internal static XAMLFile CreateXAMLFile(FileInfo fileInfo)
+        internal static XAMLFileInfo CreateXAMLFile(string path)
         {
-            return new XAMLFile(fileInfo);
+            return new XAMLFileInfo(path);
         }
     }
 }

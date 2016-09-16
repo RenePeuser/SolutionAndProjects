@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Xml.Linq;
 using Extensions;
@@ -10,12 +9,12 @@ using SolutionAndProjects.Models;
 
 namespace SolutionAndProjects.Parser
 {
-    internal class ProjectFileParser
+    internal static class ProjectFileParser
     {
 
-        internal static ProjectFile Parse(FileInfo fileInfo)
+        internal static ProjectFile Parse(this ProjectFileInfo projectFileInfo)
         {
-            var document = XDocument.Load(fileInfo.FullName);
+            var document = XDocument.Load(projectFileInfo.Value.FullName);
             var projectReferences = GetReferences(document, ParserHelper.ProjectReference, ProjectReferenceParser.Parse);
             var assemblyReferences = GetReferences(document, ParserHelper.Reference, AssemblyReferenceParser.Parse);
             var projectTypes = AnalyzeProjectTypes(document);
@@ -23,7 +22,7 @@ namespace SolutionAndProjects.Parser
             var imports = GetAllImports(document);
             var csharpFiles = GetSpecificFiles(document, ParserHelper.Compile, ParserHelper.Include, ClassCreator.CreateCSharpFile);
             var xamlFiles = GetSpecificFiles(document, ParserHelper.Page, ParserHelper.Include, ClassCreator.CreateXAMLFile);
-            return new ProjectFile(fileInfo, assemblyName, assemblyReferences, projectReferences, projectTypes, imports, csharpFiles, xamlFiles);
+            return new ProjectFile(projectFileInfo, assemblyName, assemblyReferences, projectReferences, projectTypes, imports, csharpFiles, xamlFiles);
         }
 
         private static IEnumerable<ProjectType> AnalyzeProjectTypes(XDocument document)
@@ -53,12 +52,12 @@ namespace SolutionAndProjects.Parser
             return result;
         }
 
-        private static IEnumerable<T> GetSpecificFiles<T>(XDocument document, LocalName localName, AttributeName attributeName, Func<FileInfo, T> creatorFunc)
+        private static IEnumerable<T> GetSpecificFiles<T>(XDocument document, LocalName localName, AttributeName attributeName, Func<string, T> creatorFunc)
         {
             var result = document.ElementsBy(localName)
                                  .Select(element => element.AttributeBy(attributeName)
                                  .ValueOrDefault())
-                                 .Select(item => creatorFunc(item.ToFileInfo()));
+                                 .Select(item => creatorFunc(item));
             return result;
         }
     }
