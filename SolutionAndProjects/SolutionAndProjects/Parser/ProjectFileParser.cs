@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Xml.Linq;
 using Extensions;
@@ -20,8 +21,8 @@ namespace SolutionAndProjects.Parser
             var projectTypes = AnalyzeProjectTypes(document);
             var assemblyName = document.ElementBy(ParserHelper.AssemblyName).ValueOrDefault();
             var imports = GetAllImports(document);
-            var csharpFiles = GetSpecificFiles(document, ParserHelper.Compile, ParserHelper.Include, ClassCreator.CreateCSharpFile);
-            var xamlFiles = GetSpecificFiles(document, ParserHelper.Page, ParserHelper.Include, ClassCreator.CreateXAMLFile);
+            var csharpFiles = GetSpecificFiles(document, projectFileInfo, ParserHelper.Compile, ParserHelper.Include, ClassCreator.CreateCSharpFile);
+            var xamlFiles = GetSpecificFiles(document, projectFileInfo, ParserHelper.Page, ParserHelper.Include, ClassCreator.CreateXAMLFile);
             return new ProjectFile(projectFileInfo, assemblyName, assemblyReferences, projectReferences, projectTypes, imports, csharpFiles, xamlFiles);
         }
 
@@ -52,12 +53,13 @@ namespace SolutionAndProjects.Parser
             return result;
         }
 
-        private static IEnumerable<T> GetSpecificFiles<T>(XDocument document, LocalName localName, AttributeName attributeName, Func<string, T> creatorFunc)
+        private static IEnumerable<T> GetSpecificFiles<T>(XDocument document, ProjectFileInfo projectFileInfo, LocalName localName, AttributeName attributeName, Func<string, T> creatorFunc)
         {
+            var projectDirectoryPath = projectFileInfo.Value.Directory.FullName;
             var result = document.ElementsBy(localName)
-                                 .Select(element => element.AttributeBy(attributeName)
-                                 .ValueOrDefault())
-                                 .Select(item => creatorFunc(item));
+                                 .Select(element => element.AttributeBy(attributeName).ValueOrDefault())
+                                 .Select(item => Path.Combine(projectDirectoryPath, item))
+                                 .Select(creatorFunc);
             return result;
         }
     }
