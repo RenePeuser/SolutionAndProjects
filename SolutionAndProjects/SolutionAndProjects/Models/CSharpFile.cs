@@ -11,7 +11,7 @@ namespace SolutionAndProjects.Models
             Name = name;
         }
 
-        public CSharpFileInfo CSharpFileInfo { get; set; }
+        public CSharpFileInfo CSharpFileInfo { get; }
 
         public string NameSpace { get; }
 

@@ -1,11 +1,10 @@
 ﻿using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using SolutionAndProjects;
 using SolutionAndProjects.Models;
 using SolutionAndProjects.Parser;
 using SolutionAndProjects.SpecificFileInfos;
 
-namespace SolutionAndProjectstest
+namespace SolutionAndProjects.Test
 {
     [TestClass]
     public class UnitTest1
@@ -28,7 +27,7 @@ namespace SolutionAndProjectstest
         [TestMethod]
         public void ExpectedUnitTestProjectCount()
         {
-            Assert.AreEqual(1, _solutionFile.UnitTestProjects.Count());
+            Assert.AreEqual(2, _solutionFile.UnitTestProjects.Count());
         }
 
         [TestMethod]

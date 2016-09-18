@@ -13,7 +13,7 @@ namespace SolutionAndProjects.Parser
             var copyLocal = element.ElementBy(ParserHelper.Private).ToBool(true);
             var hintPath = element.ElementBy(ParserHelper.HintPath).ValueOrDefault(string.Empty);
 
-            // Hint: If the include of a reference contains a version number, than the default value is true, otherwise is false.
+            // Hint: If include contains a version number, then the default value is true, otherwise is false.
             var includeContainsVersion = include.Contains(ParserHelper.Version);
             var specificVersion = element.ElementBy(ParserHelper.SpecificVersion).ToBool(includeContainsVersion);
 

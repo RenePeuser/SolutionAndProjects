@@ -6,7 +6,7 @@
     <ProjectGuid>{274474DC-C0C2-48E9-AD3D-7B1353E89637}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SolutionAndProjectsTest</RootNamespace>
+    <RootNamespace>SolutionAndProjects.Test</RootNamespace>
     <AssemblyName>SolutionAndProjects.Test</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -80,10 +80,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ExtendedAsserts">
+      <HintPath>..\ExternalLibs\ExtendedAsserts.dll</HintPath>
+    </Reference>
     <Reference Include="Extensions">
       <HintPath>..\ExternalLibs\Extensions.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -98,6 +103,12 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Parser\AssemblyReferenceParserTest.cs" />
+    <Compile Include="SpecificFileInfos\XAMLFileInfoTest.cs" />
+    <Compile Include="SpecificFileInfos\CSharpFileInfoTest.cs" />
+    <Compile Include="SpecificFileInfos\SolutionFileInfoTest.cs" />
+    <Compile Include="SpecificFileInfos\AssemblyFileInfoTest.cs" />
+    <Compile Include="SpecificFileInfos\SpecificFileInfoBaseTest.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -109,6 +120,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Analyzer\" />
+    <Folder Include="Assemblies\" />
+    <Folder Include="Extensions\" />
+    <Folder Include="Helper\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SampleData\AssemblyReferenceSampleData.xml" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
