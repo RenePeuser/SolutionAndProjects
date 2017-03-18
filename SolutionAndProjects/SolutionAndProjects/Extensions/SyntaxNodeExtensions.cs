@@ -1,4 +1,4 @@
-﻿using System.Diagnostics.Contracts;
+﻿using System;
 using Extensions;
 using Microsoft.CodeAnalysis;
 
@@ -8,8 +8,10 @@ namespace SolutionAndProjects.Extensions
     {
         public static T FindParent<T>(this SyntaxNode syntaxNode) where T : SyntaxNode
         {
-            Contract.Requires(syntaxNode.IsNotNull());
-
+            if (syntaxNode == null)
+            {
+                throw new ArgumentNullException(nameof(syntaxNode));
+            }
             var currentNode = syntaxNode;
             var result = syntaxNode.As<T>();
 

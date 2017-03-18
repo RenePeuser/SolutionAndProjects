@@ -1,6 +1,5 @@
-﻿using System.Diagnostics.Contracts;
+﻿using System;
 using System.IO;
-using Extensions;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using SolutionAndProjects.SpecificFileInfos;
@@ -11,7 +10,10 @@ namespace SolutionAndProjects.Extensions
     {
         public static SyntaxTree ParseFile(this CSharpFileInfo csharpFileInfo)
         {
-            Contract.Requires(csharpFileInfo.IsNotNull());
+            if (csharpFileInfo == null)
+            {
+                throw new ArgumentNullException(nameof(csharpFileInfo));
+            }
 
             var text = File.ReadAllText(csharpFileInfo.Value.FullName);
             var syntaxTree = CSharpSyntaxTree.ParseText(text);

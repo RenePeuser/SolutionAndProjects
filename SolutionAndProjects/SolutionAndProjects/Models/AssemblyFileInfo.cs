@@ -1,4 +1,6 @@
-﻿namespace SolutionAndProjects.Models
+﻿using SolutionAndProjects.SpecificFileInfos;
+
+namespace SolutionAndProjects.Models
 {
     public class AssemblyFileInfo : SpecificFileInfoBase
     {

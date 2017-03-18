@@ -1,6 +1,6 @@
 ﻿namespace SolutionAndProjects.SpecificFileInfos
 {
-    public class SolutionFileInfo : Models.SpecificFileInfoBase
+    public class SolutionFileInfo : SpecificFileInfoBase
     {
         public SolutionFileInfo(string path)
             : base(path, ".sln")

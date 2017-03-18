@@ -180,6 +180,7 @@
   <ItemGroup>
     <Compile Include="Analyzer\ProjectFileErrorAnalyzer.cs" />
     <Compile Include="Assemblies\AssemblyLoadFromService.cs" />
+    <Compile Include="Common\SemanticType.cs" />
     <Compile Include="Extensions\CSharpFileInfoExtensions.cs" />
     <Compile Include="Extensions\SyntaxNodeExtensions.cs" />
     <Compile Include="Extensions\SyntaxTreeExtensions.cs" />
@@ -201,7 +202,6 @@
     <Compile Include="Models\SolutionFile.cs" />
     <Compile Include="SpecificFileInfos\SolutionFileInfo.cs" />
     <Compile Include="Models\SolutionFileName.cs" />
-    <Compile Include="Models\SpecificFileInfoBase.cs" />
     <Compile Include="Models\StaticResourceUsages.cs" />
     <Compile Include="Models\XAMLFile.cs" />
     <Compile Include="Parser\AssemblyReferenceParser.cs" />
@@ -210,8 +210,8 @@
     <Compile Include="Parser\ProjectTypeParser.cs" />
     <Compile Include="Parser\SolutionFileParser.cs" />
     <Compile Include="Parser\XAMLFileParser.cs" />
-    <Compile Include="SpecificFileInfos\SpecificFileInfoBase.cs" />
     <Compile Include="SpecificFileInfos\AssemblyFileInfo.cs" />
+    <Compile Include="SpecificFileInfos\SpecificFileInfoBase.cs" />
     <Compile Include="SpecificFileInfos\XAMLFileInfo.cs" />
     <Compile Include="SpecificFileInfos\CSharpFileInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

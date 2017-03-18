@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics.Contracts;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using Extensions;
 using Microsoft.CodeAnalysis;
 
 namespace SolutionAndProjects.Extensions
@@ -10,7 +9,10 @@ namespace SolutionAndProjects.Extensions
     {
         public static IEnumerable<T> AllOf<T>(this SyntaxTree syntaxTree) where T : SyntaxNode
         {
-            Contract.Requires(syntaxTree.IsNotNull());
+            if (syntaxTree == null)
+            {
+                throw new ArgumentNullException(nameof(syntaxTree));
+            }
 
             var result = syntaxTree.GetRoot().DescendantNodes().OfType<T>();
             return result;
