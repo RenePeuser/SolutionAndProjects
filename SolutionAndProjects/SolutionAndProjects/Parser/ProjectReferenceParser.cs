@@ -5,7 +5,7 @@ using SolutionAndProjects.Models;
 
 namespace SolutionAndProjects.Parser
 {
-    internal class ProjectReferenceParser
+    internal static class ProjectReferenceParser
     {
         internal static ProjectReference Parse(XElement element)
         {

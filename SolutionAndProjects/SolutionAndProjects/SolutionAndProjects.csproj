@@ -178,45 +178,47 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="Analyzer\ProjectFileErrorAnalyzer.cs" />
     <Compile Include="Assemblies\AssemblyLoadFromService.cs" />
     <Compile Include="Extensions\CSharpFileInfoExtensions.cs" />
     <Compile Include="Extensions\SyntaxNodeExtensions.cs" />
     <Compile Include="Extensions\SyntaxTreeExtensions.cs" />
+    <Compile Include="Extensions\ProjectFileExtensions.cs" />
+    <Compile Include="Extensions\ReferenceErrorExtensions.cs" />
+    <Compile Include="Helper\ClassCreator.cs" />
     <Compile Include="Helper\ParserHelper.cs" />
-    <Compile Include="Models\CSharpFile.cs" />
-    <Compile Include="SpecificFileInfos\SpecificFileInfoBase.cs" />
-    <Compile Include="Models\ProjectFileInfo.cs" />
-    <Compile Include="SpecificFileInfos\AssemblyFileInfo.cs" />
-    <Compile Include="Models\XAMLFile.cs" />
-    <Compile Include="SpecificFileInfos\XAMLFileInfo.cs" />
+    <Compile Include="Helper\SolutionFileHelper.cs" />
+    <Compile Include="Models\AssemblyFileInfo.cs" />
+    <Compile Include="Models\AssemblyReference.cs" />
+    <Compile Include="Models\Class.cs" />
+    <Compile Include="Models\Import.cs" />
+    <Compile Include="Models\ProjectContentItem.cs" />
+    <Compile Include="Models\ProjectFile.cs" />
+    <Compile Include="Models\ProjectFileErrorResult.cs" />
+    <Compile Include="SpecificFileInfos\ProjectFileInfo.cs" />
+    <Compile Include="Models\ProjectReference.cs" />
+    <Compile Include="Models\ReferenceBase.cs" />
+    <Compile Include="Models\SolutionFile.cs" />
     <Compile Include="SpecificFileInfos\SolutionFileInfo.cs" />
     <Compile Include="Models\SolutionFileName.cs" />
-    <Compile Include="Parser\ProjectReferenceParser.cs" />
+    <Compile Include="Models\SpecificFileInfoBase.cs" />
+    <Compile Include="Models\StaticResourceUsages.cs" />
+    <Compile Include="Models\XAMLFile.cs" />
     <Compile Include="Parser\AssemblyReferenceParser.cs" />
-    <Compile Include="Parser\SolutionFileParser.cs" />
-    <Compile Include="SpecificFileInfos\CSharpFileInfo.cs" />
-    <Compile Include="Parser\CSharpFileParser.cs" />
-    <Compile Include="Parser\XAMLFileParser.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Models\AssemblyReference.cs" />
-    <Compile Include="Models\Import.cs" />
-    <Compile Include="Models\ProjectFile.cs" />
-    <Compile Include="Analyzer\ProjectFileErrorAnalyzer.cs" />
-    <Compile Include="Models\ProjectFileErrorResult.cs" />
-    <Compile Include="Extensions\ProjectFileExtensions.cs" />
-    <Compile Include="Models\ProjectReference.cs" />
     <Compile Include="Parser\ProjectFileParser.cs" />
+    <Compile Include="Parser\ProjectReferenceParser.cs" />
     <Compile Include="Parser\ProjectTypeParser.cs" />
-    <Compile Include="Models\ReferenceBase.cs" />
-    <Compile Include="Helper\ClassCreator.cs" />
-    <Compile Include="Extensions\ReferenceErrorExtensions.cs" />
-    <Compile Include="Models\SolutionFile.cs" />
-    <Compile Include="Helper\SolutionFileHelper.cs" />
-    <Compile Include="ProjectType.cs" />
+    <Compile Include="Parser\SolutionFileParser.cs" />
+    <Compile Include="Parser\XAMLFileParser.cs" />
+    <Compile Include="SpecificFileInfos\SpecificFileInfoBase.cs" />
+    <Compile Include="SpecificFileInfos\AssemblyFileInfo.cs" />
+    <Compile Include="SpecificFileInfos\XAMLFileInfo.cs" />
+    <Compile Include="SpecificFileInfos\CSharpFileInfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Models\ProjectType.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />

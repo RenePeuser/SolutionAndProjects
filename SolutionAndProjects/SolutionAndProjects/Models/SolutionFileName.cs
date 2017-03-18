@@ -1,4 +1,4 @@
-﻿using System.Diagnostics.Contracts;
+﻿using System;
 using Extensions;
 using Extensions.Helpers;
 
@@ -6,12 +6,30 @@ namespace SolutionAndProjects.Models
 {
     public class SolutionFileName : SemanticType<string>
     {
-        private const string SolutionFileExtension = ".sln";
+        private const string SOLUTION_FILE_EXTENSION = ".sln";
 
-        public SolutionFileName(string value) : base(value)
+        public SolutionFileName(string value)
+            : base(value)
         {
-            Contract.Requires(value.IsNotNullOrEmpty(), "The solution file name must not be null or empty");
-            Contract.Requires(value.EndsWith(SolutionFileExtension), "The solution file has to has solution file extension '.sln'");
+            if (value == null)
+            {
+                throw new ArgumentNullException(nameof(value));
+            }
+
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                throw new ArgumentException("The solution file name must not be a whitespace");
+            }
+
+            if (value.IsEmpty())
+            {
+                throw new ArgumentException("The solution file name must not be empty");
+            }
+
+            if (!value.EndsWith(SOLUTION_FILE_EXTENSION))
+            {
+                throw new ArgumentException("The solution file has to has solution file extension '.sln'");
+            }
         }
     }
 }

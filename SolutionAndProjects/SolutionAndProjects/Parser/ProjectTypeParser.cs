@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using System.Diagnostics.Contracts;
-using Extensions;
+using System.Globalization;
+using SolutionAndProjects.Models;
 
 namespace SolutionAndProjects.Parser
 {
     internal static class ProjectTypeParser
     {
-        internal static readonly Dictionary<Guid, ProjectType> SProjectTypeMapping = new Dictionary<Guid, ProjectType>
+        private static readonly Dictionary<Guid, ProjectType> SProjectTypeMapping = new Dictionary<Guid, ProjectType>
                                                                                     {
                                                                                         { new Guid("FAE04EC0-301F-11D3-BF4B-00C04F79EFBC"), ProjectType.C_Sharp },
                                                                                         { new Guid("F184B08F-C81C-45F6-A57F-5ABD9991F28F"), ProjectType.VB_NET },
@@ -59,10 +59,17 @@ namespace SolutionAndProjects.Parser
                                                                                         { new Guid("C1CDDADD-2546-481F-9697-4EA41081F2FC"), ProjectType.Office_SharePoint_App }
                                                                                     };
 
-        internal static ProjectType GetProjectType(this Guid guid)
+        internal static ProjectType GetProjectType(Guid guid)
         {
-            Contract.Requires(guid.IsNotNull());
-            Contract.Requires(SProjectTypeMapping.ContainsKey(guid));
+            if (guid == null)
+            {
+                throw new ArgumentNullException(nameof(guid));
+            }
+
+            if (!SProjectTypeMapping.ContainsKey(guid))
+            {
+                throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, "Unknown guid:'{0}' can not resolve project type", guid));
+            }
 
             return SProjectTypeMapping[guid];
         }

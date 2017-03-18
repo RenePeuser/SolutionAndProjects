@@ -1,8 +1,13 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SolutionAndProjects.Models;
 using SolutionAndProjects.Parser;
 using SolutionAndProjects.SpecificFileInfos;
+using Extensions;
 
 namespace SolutionAndProjects.Test
 {
@@ -71,5 +76,37 @@ namespace SolutionAndProjects.Test
         {
             Assert.IsTrue(_solutionFile.ProductiveProjects.First().ProjectTypes.SequenceEqual(new[] { ProjectType.Test, ProjectType.C_Sharp }));
         }
+
+        [TestMethod]
+        public void TestA()
+        {
+            var assemblyNames = _solutionFile.ProductiveProjects.ToString("Title", item => item.AssemblyName);
+            var special = _solutionFile.ProductiveProjects.Select(project => project.AssemblyReferences.ToString("AssemblyReferences", item => item.HintPath));
+
+            Assert.AreEqual(2, special.Count());
+        }
+
+    }
+
+    public static class ToStringExExtensions
+    {
+
+        public static string ToStringEx<T, TSource, TItem>(this T obj, Expression<Func<TSource>> source, params Expression<Func<TItem>>[] expressions)
+        {
+            var sourceName = source.ExtractPropertyName();
+            var compiledExpressions = expressions.Select(item => new KeyValuePair<string, Func<TItem>>(item.ExtractPropertyName(), item.Compile())).ToDictionary();
+
+
+            var stringBuilder = new StringBuilder();
+            stringBuilder.AppendLine(sourceName);
+            foreach (var keyValuePair in compiledExpressions)
+            {
+                stringBuilder.AppendLine($"{keyValuePair.Key} [{keyValuePair.Value}]");
+            }
+
+            return stringBuilder.ToString();
+
+        }
+
     }
 }

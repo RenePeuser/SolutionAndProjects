@@ -106,7 +106,7 @@
     <Compile Include="Parser\AssemblyReferenceParserTest.cs" />
     <Compile Include="SpecificFileInfos\XAMLFileInfoTest.cs" />
     <Compile Include="SpecificFileInfos\CSharpFileInfoTest.cs" />
-    <Compile Include="SpecificFileInfos\SolutionFileInfoTest.cs" />
+    <Compile Include="SolutionFileInfoTest.cs" />
     <Compile Include="SpecificFileInfos\AssemblyFileInfoTest.cs" />
     <Compile Include="SpecificFileInfos\SpecificFileInfoBaseTest.cs" />
     <Compile Include="UnitTest1.cs" />

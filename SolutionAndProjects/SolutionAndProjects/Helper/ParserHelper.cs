@@ -10,13 +10,9 @@ namespace SolutionAndProjects.Helper
 
         internal static LocalName SpecificVersion { get; } = new LocalName("SpecificVersion");
 
-        internal static AttributeName Include { get; } = new AttributeName("Include");
-
         internal static LocalName Private { get; } = new LocalName("Private");
 
         internal static LocalName Name { get; } = new LocalName("Name");
-
-        internal static AttributeName Project { get; } = new AttributeName("Project");
 
         internal static LocalName AssemblyName { get; } = new LocalName("AssemblyName");
 
@@ -31,5 +27,13 @@ namespace SolutionAndProjects.Helper
         internal static LocalName ProjectReference { get; } = new LocalName("ProjectReference");
 
         internal static LocalName Reference { get; } = new LocalName("Reference");
+
+        internal static LocalName Content { get; } = new LocalName("Content");
+
+        internal static LocalName TargetFrameworkVersion { get; } = new LocalName("TargetFrameworkVersion");
+
+        internal static AttributeName Include { get; } = new AttributeName("Include");
+
+        internal static AttributeName Project { get; } = new AttributeName("Project");
     }
 }

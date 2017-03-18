@@ -5,15 +5,15 @@ using SolutionAndProjects.Models;
 
 namespace SolutionAndProjects.Parser
 {
-    internal class AssemblyReferenceParser
+    internal static class AssemblyReferenceParser
     {
         internal static AssemblyReference Parse(XElement element)
         {
-            var include = element.AttributeBy(ParserHelper.Include).ToString();
-            var copyLocal = element.ElementBy(ParserHelper.Private).ToBool(true);
-            var hintPath = element.ElementBy(ParserHelper.HintPath).ValueOrDefault(string.Empty);
+            var include = element.AttributeBy(ParserHelper.Include).Value;
 
-            // Hint: If include contains a version number, then the default value is true, otherwise is false.
+            var hintPath = element.ElementBy(ParserHelper.HintPath).ValueOrDefault(string.Empty);
+            var copyLocal = element.ElementBy(ParserHelper.Private).ToBool(hintPath.IsNotEmpty());
+
             var includeContainsVersion = include.Contains(ParserHelper.Version);
             var specificVersion = element.ElementBy(ParserHelper.SpecificVersion).ToBool(includeContainsVersion);
 

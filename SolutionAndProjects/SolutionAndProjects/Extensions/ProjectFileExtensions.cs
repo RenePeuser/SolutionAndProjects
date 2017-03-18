@@ -1,13 +1,12 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using System.Diagnostics.Contracts;
 using System.Linq;
-using Extensions;
 using SolutionAndProjects.Analyzer;
 using SolutionAndProjects.Models;
 
 namespace SolutionAndProjects.Extensions
 {
+    [CLSCompliant(false)]
     public static class ProjectFileExtensions
     {
         public static IEnumerable<ProjectFileErrorResult> CheckAssemblyReferencesForErrors(
@@ -15,16 +14,27 @@ namespace SolutionAndProjects.Extensions
             Func<AssemblyReference, bool> findErrorFunc,
             Func<AssemblyReference, string> errorValue)
         {
-            Contract.Requires(projects.IsNotNull());
-            Contract.Requires(findErrorFunc.IsNotNull());
-            Contract.Requires(errorValue.IsNotNull());
+            if (projects == null)
+            {
+                throw new ArgumentNullException(nameof(projects));
+            }
+
+            if (findErrorFunc == null)
+            {
+                throw new ArgumentNullException(nameof(findErrorFunc));
+            }
+
+            if (errorValue == null)
+            {
+                throw new ArgumentNullException(nameof(errorValue));
+            }
 
             var errorResults =
                 projects.Select(
                     project =>
                     new ProjectFileErrorResult(
                         project,
-                        project.AssemblyReferences.AnalyzeErrors(findErrorFunc, errorValue)))
+                        ProjectFileErrorAnalyzer.AnalyzeErrors(project.AssemblyReferences, findErrorFunc, errorValue)))
                     .Where(item => item.HasErrors);
             return errorResults;
         }
@@ -34,14 +44,75 @@ namespace SolutionAndProjects.Extensions
             Func<ProjectReference, bool> findErrorFunc,
             Func<ProjectReference, string> errorValue)
         {
-            Contract.Requires(projects.IsNotNull());
-            Contract.Requires(findErrorFunc.IsNotNull());
-            Contract.Requires(errorValue.IsNotNull());
+            if (projects == null)
+            {
+                throw new ArgumentNullException(nameof(projects));
+            }
+
+            if (findErrorFunc == null)
+            {
+                throw new ArgumentNullException(nameof(findErrorFunc));
+            }
+
+            if (errorValue == null)
+            {
+                throw new ArgumentNullException(nameof(errorValue));
+            }
 
             var errorResults = projects.Select(project => new ProjectFileErrorResult(
                                                 project,
-                                                project.ProjectReferences.AnalyzeErrors(findErrorFunc, errorValue)))
+                                                ProjectFileErrorAnalyzer.AnalyzeErrors(project.ProjectReferences, findErrorFunc, errorValue)))
                                        .Where(item => item.HasErrors);
+            return errorResults;
+        }
+
+        public static IEnumerable<ProjectFileErrorResult> CheckProjectReferencesForErrors(
+            this ProjectFile project,
+            Func<ProjectReference, bool> findErrorFunc,
+            Func<ProjectReference, string> errorValue)
+        {
+            if (project == null)
+            {
+                throw new ArgumentNullException(nameof(project));
+            }
+
+            if (findErrorFunc == null)
+            {
+                throw new ArgumentNullException(nameof(findErrorFunc));
+            }
+
+            if (errorValue == null)
+            {
+                throw new ArgumentNullException(nameof(errorValue));
+            }
+
+            var result = ProjectFileErrorAnalyzer.AnalyzeErrors(project.ProjectReferences, findErrorFunc, errorValue).ToList();
+            var errorResults = result.Select(item => new ProjectFileErrorResult(project, result));
+            return errorResults;
+        }
+
+        public static IEnumerable<ProjectFileErrorResult> CheckAssemblyReferencesForErrors(
+            this ProjectFile project,
+            Func<AssemblyReference, bool> findErrorFunc,
+            Func<AssemblyReference, string> errorValue)
+        {
+            if (project == null)
+            {
+                throw new ArgumentNullException(nameof(project));
+            }
+
+            if (findErrorFunc == null)
+            {
+                throw new ArgumentNullException(nameof(findErrorFunc));
+            }
+
+            if (errorValue == null)
+            {
+                throw new ArgumentNullException(nameof(errorValue));
+            }
+
+            var result = ProjectFileErrorAnalyzer.AnalyzeErrors(project.AssemblyReferences, findErrorFunc, errorValue).ToList();
+            var errorResults = result.Select(item => new ProjectFileErrorResult(project, result));
             return errorResults;
         }
 
@@ -50,30 +121,28 @@ namespace SolutionAndProjects.Extensions
             Func<ProjectFile, bool> findErrorFunc,
             Func<ProjectFile, string> errorValue)
         {
-            Contract.Requires(projects.IsNotNull());
-            Contract.Requires(findErrorFunc.IsNotNull());
-            Contract.Requires(errorValue.IsNotNull());
+            if (projects == null)
+            {
+                throw new ArgumentNullException(nameof(projects));
+            }
+
+            if (findErrorFunc == null)
+            {
+                throw new ArgumentNullException(nameof(findErrorFunc));
+            }
+
+            if (errorValue == null)
+            {
+                throw new ArgumentNullException(nameof(errorValue));
+            }
 
             var errorResults = projects.Select(project =>
-                                                {
-                                                    var analyzeResult = project.AnalyzeErrors(findErrorFunc, errorValue);
-                                                    var errors = analyzeResult == null ? new string[] { } : new[] { analyzeResult };
-                                                    return new ProjectFileErrorResult(project, errors);
-                                                })
+            {
+                var analyzeResult = ProjectFileErrorAnalyzer.AnalyzeErrors(project, findErrorFunc, errorValue);
+                var errors = analyzeResult == null ? new string[] { } : new[] { analyzeResult };
+                return new ProjectFileErrorResult(project, errors);
+            })
                                         .Where(item => item.HasErrors);
-            return errorResults;
-        }
-
-        public static ProjectFileErrorResult CheckProjectForErrors(
-            this ProjectFile projectFile,
-            Func<ProjectFile, bool> findErrorFunc,
-            Func<ProjectFile, string> errorValue)
-        {
-            Contract.Requires(projectFile.IsNotNull());
-            Contract.Requires(findErrorFunc.IsNotNull());
-            Contract.Requires(errorValue.IsNotNull());
-
-            var errorResults = new ProjectFileErrorResult(projectFile, new[] { projectFile.AnalyzeErrors(findErrorFunc, errorValue) });
             return errorResults;
         }
     }

@@ -2,7 +2,8 @@
 {
     public class AssemblyReference : ReferenceBase
     {
-        internal AssemblyReference(string include, bool copyLocal, string hintPath, bool specificVersion) : base(include, copyLocal)
+        internal AssemblyReference(string include, bool copyLocal, string hintPath, bool specificVersion)
+            : base(include, copyLocal)
         {
             HintPath = hintPath;
             SpecificVersion = specificVersion;

@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Reflection;
-using Extensions;
 using SolutionAndProjects.SpecificFileInfos;
 
 namespace SolutionAndProjects.Assemblies
@@ -15,9 +13,15 @@ namespace SolutionAndProjects.Assemblies
 
         public AssemblyLoadFromService(AppDomain appDomain, IEnumerable<AssemblyFileInfo> allAssemblies)
         {
-            Contract.Requires(appDomain.IsNotNull());
-            Contract.Requires(allAssemblies.IsNotNull());
+            if (appDomain == null)
+            {
+                throw new ArgumentNullException(nameof(appDomain));
+            }
 
+            if (allAssemblies == null)
+            {
+                throw new ArgumentNullException(nameof(allAssemblies));
+            }
             _appDomain = appDomain;
             _allAssemblies = allAssemblies;
             _appDomain.AssemblyResolve += AppDomain_AssemblyResolve;
@@ -30,7 +34,10 @@ namespace SolutionAndProjects.Assemblies
 
         public IEnumerable<Type> GetAllTypes(AssemblyFileInfo assemblyFileInfo)
         {
-            Contract.Requires(assemblyFileInfo.IsNotNull());
+            if (assemblyFileInfo == null)
+            {
+                throw new ArgumentNullException(nameof(assemblyFileInfo));
+            }
 
             var assembly = Assembly.LoadFrom(assemblyFileInfo.Value.FullName);
             var types = assembly.GetTypes();
@@ -39,7 +46,10 @@ namespace SolutionAndProjects.Assemblies
 
         public IEnumerable<Type> GetAllTypes(IEnumerable<AssemblyFileInfo> assemblyFileInfos)
         {
-            Contract.Requires(assemblyFileInfos.IsNotNull());
+            if (assemblyFileInfos == null)
+            {
+                throw new ArgumentNullException(nameof(assemblyFileInfos));
+            }
 
             var result = assemblyFileInfos.SelectMany(GetAllTypes);
             return result;
