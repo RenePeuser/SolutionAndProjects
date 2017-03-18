@@ -20,9 +20,9 @@ namespace SolutionAndProjects.Parser
             var solutionFile = Microsoft.Build.Construction.SolutionFile.Parse(solutionFileInfo.Value.FullName);
 
             var projects = solutionFile.ProjectsInOrder.Where(item => Path.GetExtension(item.RelativePath) == ProjectFileExtension)
-                                                        // Only temporary till structure really exists !!
-                                                       //.Where(item => File.Exists(item.AbsolutePath))
-                                                       .Select(item => new ProjectFileInfo(item.AbsolutePath))                                                      
+                                                       // Only temporary till structure really exists !!
+                                                       .Where(item => File.Exists(item.AbsolutePath))
+                                                       .Select(item => new ProjectFileInfo(item.AbsolutePath))
                                                        .Select(ProjectFileParser.Parse)
                                                        .ToList();
 

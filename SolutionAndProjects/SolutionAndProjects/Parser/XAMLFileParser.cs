@@ -6,7 +6,7 @@ using SolutionAndProjects.SpecificFileInfos;
 
 namespace SolutionAndProjects.Parser
 {
-    public static class XAMLFileParser
+    internal static class XAMLFileParser
     {
         public static XAMLFile Parse(XAMLFileInfo xamlFileInfo)
         {
