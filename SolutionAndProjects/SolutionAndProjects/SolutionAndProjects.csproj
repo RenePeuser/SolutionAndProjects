@@ -181,6 +181,7 @@
     <Compile Include="Analyzer\ProjectFileErrorAnalyzer.cs" />
     <Compile Include="Assemblies\AssemblyLoadFromService.cs" />
     <Compile Include="Common\SemanticType.cs" />
+    <Compile Include="ConfigFiles\TcGuiPluginConfigFileService.cs" />
     <Compile Include="Extensions\CSharpFileInfoExtensions.cs" />
     <Compile Include="Extensions\SyntaxNodeExtensions.cs" />
     <Compile Include="Extensions\SyntaxTreeExtensions.cs" />
@@ -200,6 +201,7 @@
     <Compile Include="Models\ProjectReference.cs" />
     <Compile Include="Models\ReferenceBase.cs" />
     <Compile Include="Models\SolutionFile.cs" />
+    <Compile Include="SpecificFileInfos\ConfigFileInfo.cs" />
     <Compile Include="SpecificFileInfos\SolutionFileInfo.cs" />
     <Compile Include="Models\SolutionFileName.cs" />
     <Compile Include="Models\StaticResourceUsages.cs" />
